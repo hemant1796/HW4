@@ -1,22 +1,6 @@
-# HW4
----
-title: "HW4-Data-Visualization"
-output: github_document
----
+# Homework 4: Arrange Tables 
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 **Due:** Thursday, March 2, 2023 by 11:59pm 
-**Submitted by : ** Hemant kumar
-
-**UIN** 01243485
-## GitHub Documents
-
-This is an R Markdown format used for publishing markdown documents to GitHub. When you click the **Knit** button all R code chunks are run and a markdown file (.md) suitable for publishing to GitHub is generated.
-
-
-
 
 The goal of this assignment is to propose and implement charts based on questions asked about real-world data.  *Read through the entire assignment before starting.*
 
@@ -55,32 +39,7 @@ The general formula is `rate_per_100k = (cases / population_denominator) * 10000
 
 `rate_per_100k = (100 / 2,000,000) * 100000 = 5`  
 
-This means that this rate is equivalent to 5 cases in a population of 100,000.#
-
-
-**Answer 1 **
-
-OpenRefine:
-
-1. I Opened the dataset in OpenRefine.
-2. Created a new column named "rate_per_100k" using the expression: value('Deaths') / value('population_denominator') * 100000
-3. Filtered the dataset to only include cases.
-4. Grouped the data by vaccination status and date.
-5. Aggregated the data by summing the cases and taking the mean of the rate per 100k for each group and date.
-
-Tableau:
-
-1. I Opened  Tableau and connect to the exported CSV file from OpenRefine.
-2. Dragged the "Date" field to the Columns shelf.
-3. Dragged the "rate_per_100k" field to the Rows shelf.
-4. Dragged the "Vaccination Status" field to the Color shelf.
-5. Dragged the "Deaths" field to the Size shelf.
-6. Changed the mark type to "Line".
-
-Following the above steps I got a line chart in Tableau that shows the weekly rate of COVID-19 Deaths in Virginia over time based on vaccination status, with each line representing a different vaccination status group.
-
-![HW4-Q1](https://user-images.githubusercontent.com/31125760/222594334-e44151be-4e2b-483b-9a67-9fa2018c1175.png)
-
+This means that this rate is equivalent to 5 cases in a population of 100,000.
 
 
 ### Part 2
@@ -89,51 +48,9 @@ Use dataset 2 to create a chart to answer the question, "For each health distric
 
 Remove or ignore the "health districts" labeled "Out of State" and "Not Reported".
 
-**Answer 2: ** 
-1. Connect to the dataset: Open Tableau and click on "Connect to Data". Select "Microsoft Excel" as the file type and navigate to the file containing the Virginia Department of Health's COVID-19 Public Use Dataset on Vaccines Doses Administered that you provided earlier. 
-
-2. Create a calculated field: Right-click on the "1st Dose #" field in the "Measures" pane, and select "Create Calculated Field".
-
-3. Create a new sheet: Click on the "New Worksheet" button in the bottom-left corner of the Tableau window.
-
-4. Drag and drop fields onto the view: In the "Data" pane, drag the "Health District" and "Facility Type" fields to the "Columns" shelf. Drag the "Pfizer 1st Dose #" field to the "Rows" shelf.
-
-5. Change the chart type to a pie chart: Click on the "Show Me" button in the top-right corner of the Tableau window, and select the "Pie" chart type.
-
-6. Filter the data: Drag the "Health District" field to the "Filters" shelf. In the filter dialog box, uncheck the boxes next to "Out of State" and "Not Reported" to remove those health districts from the view.
-
-7. Color the chart by health district: Drag the "Health District" field to the "Color" shelf.
-
-8. Label the slices: Click on the "Label" button in the "Marks" card, and select "Value".
-
-9. Adjust the chart formatting: Use the formatting options in the "Marks" card and "Format" pane to adjust the chart colors, labels.
-
-
-![HW4-Q2](https://user-images.githubusercontent.com/31125760/222600736-737e2430-4925-4d7b-a264-c890265063ce.PNG)
-
 ### Part 3
 
 Propose two questions that require data from dataset 1 and dataset 2 to be combined to answer.  Describe what data manipulation would need to be done to answer each question.  *Sketch* a chart that could be used the answer each question.  Justify your visualization idiom choice.
-
-When merging the two data sets, two questions came out.
-
-**Question 1:** On bases of region, does the total number of doses admininsted affect rate of infections, hosptilalizations, and deaths in
-that particular region?
-
-To merge both data sets, there should be one common attribute. That attribute for me was Health Region. At first, I have created a new column on the second data set that represents Health Region. In that column, I have found the Health Region by using the data from Health District based on the data from the VDH. Therefore, I filtered Health Region and picked certain columns from it. The columns that I have picked were Hospitalizations, Deaths, and Vaccine Doses Administered count. I have used scatter plot to plot between Vaccine Administered count and Hospitalizations, and Vaccine Administered count and Deaths. Scatter plot is the right option due to having two quantitative values.
-For instance, Hospitalization has increased when Vaccine Administered count was low. But, Deaths decreased when Vaccine Administered count per Health Region increased. Below is the sketch for both Hospitalizations and deaths.
-
-![1](https://user-images.githubusercontent.com/31125760/222619633-38656f9b-6cc0-4837-b6b3-384433215298.jpeg)
-
-![2](https://user-images.githubusercontent.com/31125760/222619645-50b8ac15-1071-47dc-a3ab-8011577d68b5.jpeg)
-
-
-**Question 2:** Based on the number of doses, which Health Region had the rate of the third dose?
-
-Based on the merged data set,I have filtered the dose number to be equal to 3. From there,I have aggregated by “Health Region” and summed it up.Then, got only the Vaccine Administered count and plot it. The best option to plot this is bar graph. Bar graph is well-suitable for this problem due to having a categorical value and ordinal value. For instance, Northern Region had the highest third dose in all regions. Below is the sketch for third dose between regions.
-
-![3](https://user-images.githubusercontent.com/31125760/222619712-d8909288-2baa-49ff-88d0-ef82302afc6e.jpeg)
-
 
 
 ## Files to Include 
@@ -181,39 +98,3 @@ Submit the URL of your report (*not the URL of your repo*) in Canvas:
 * Under "Assignment Submission", click the "Write Submission" button.
 * Copy/paste the URL of your `report.md` file into the edit box (should be something like https<nolink>://github.com/odu-cs625-datavis/fall22-hw4-*username*/blob/master/report.md)
 * Make sure to "Submit" your assignment.
--   Unstack the group by in Python,
-    <https://stackoverflow.com/questions/51034291/in-python-how-do-i-create-a-line-plot-based-on-groupby-of-two-categories-wit>
--   Plotting Multi-index columns,
-    <https://towardsdatascience.com/how-to-make-multi-index-index-charts-with-plotly-4d3984cd7b09>
--   Sum Columns in the Multi-index in panads,
-    <https://stackoverflow.com/questions/48272452/sum-columns-by-level-in-a-pandas-multiindex-dataframe>
--   Selecting the n rows from a dataframe,
-    <https://datascienceparichay.com/article/pandas-select-first-n-rows-dataframe/>
--   Excluding several columns from the groupby,
-    <https://stackoverflow.com/questions/32751229/pandas-sum-by-groupby-but-exclude-certain-columns>
-    \*Undestanding what is level=0 in groupby,
-    <https://stackoverflow.com/questions/49859182/understanding-level-0-and-group-keys>
--  * R markdown, <https://r4ds.had.co.nz/r-markdown.html>    
-
-
-
-
-## Including Code
-
-You can include R code in the document as follows:
-
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
-
-
